@@ -1,0 +1,216 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <h2 class="form-title">النموذج الخامس: إشراك أصحاب العلاقة ودراسة العائد</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المستفيدون</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="beneficiaries_target" class="form-label">عدد المشاركين المستهدفين</label>
+                        <input type="number" class="form-control" id="beneficiaries_target" name="beneficiaries_target" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد المستهدف</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="beneficiaries_actual" class="form-label">عدد المشاركين الفعليين</label>
+                        <input type="number" class="form-control" id="beneficiaries_actual" name="beneficiaries_actual" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد الفعلي</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="beneficiaries_percentage" class="form-label">نسبة المشاركة (%)</label>
+                        <input type="number" class="form-control" id="beneficiaries_percentage" name="beneficiaries_percentage" min="0" max="100" required>
+                        <div class="invalid-feedback">يرجى إدخال نسبة المشاركة</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="beneficiaries_impact" class="form-label">الأثر</label>
+                        <textarea class="form-control" id="beneficiaries_impact" name="beneficiaries_impact" rows="2" required></textarea>
+                        <div class="invalid-feedback">يرجى إدخال الأثر</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="beneficiaries_evaluation" class="form-label">طريقة التقييم</label>
+                        <select class="form-select" id="beneficiaries_evaluation" name="beneficiaries_evaluation" required>
+                            <option value="">اختر طريقة التقييم</option>
+                            <option value="survey">استبانة</option>
+                            <option value="interview">مقابلة</option>
+                            <option value="observation">ملاحظة</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار طريقة التقييم</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="beneficiaries_impact_type" class="form-label">نوع التأثير</label>
+                        <select class="form-select" id="beneficiaries_impact_type" name="beneficiaries_impact_type" required>
+                            <option value="">اختر نوع التأثير</option>
+                            <option value="positive">إيجابي</option>
+                            <option value="negative">سلبي</option>
+                            <option value="neutral">محايد</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار نوع التأثير</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="beneficiaries_duration" class="form-label">المدة الزمنية</label>
+                        <input type="text" class="form-control" id="beneficiaries_duration" name="beneficiaries_duration" placeholder="مثال: 3 أشهر" required>
+                        <div class="invalid-feedback">يرجى إدخال المدة الزمنية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المجتمع</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="community_target" class="form-label">عدد المشاركين المستهدفين</label>
+                        <input type="number" class="form-control" id="community_target" name="community_target" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد المستهدف</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="community_actual" class="form-label">عدد المشاركين الفعليين</label>
+                        <input type="number" class="form-control" id="community_actual" name="community_actual" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد الفعلي</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="community_percentage" class="form-label">نسبة المشاركة (%)</label>
+                        <input type="number" class="form-control" id="community_percentage" name="community_percentage" min="0" max="100" required>
+                        <div class="invalid-feedback">يرجى إدخال نسبة المشاركة</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="community_impact" class="form-label">الأثر</label>
+                        <textarea class="form-control" id="community_impact" name="community_impact" rows="2" required></textarea>
+                        <div class="invalid-feedback">يرجى إدخال الأثر</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="community_evaluation" class="form-label">طريقة التقييم</label>
+                        <select class="form-select" id="community_evaluation" name="community_evaluation" required>
+                            <option value="">اختر طريقة التقييم</option>
+                            <option value="survey">استبانة</option>
+                            <option value="interview">مقابلة</option>
+                            <option value="observation">ملاحظة</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار طريقة التقييم</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="community_impact_type" class="form-label">نوع التأثير</label>
+                        <select class="form-select" id="community_impact_type" name="community_impact_type" required>
+                            <option value="">اختر نوع التأثير</option>
+                            <option value="positive">إيجابي</option>
+                            <option value="negative">سلبي</option>
+                            <option value="neutral">محايد</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار نوع التأثير</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="community_duration" class="form-label">المدة الزمنية</label>
+                        <input type="text" class="form-control" id="community_duration" name="community_duration" placeholder="مثال: 3 أشهر" required>
+                        <div class="invalid-feedback">يرجى إدخال المدة الزمنية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الجامعة</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="university_target" class="form-label">عدد المشاركين المستهدفين</label>
+                        <input type="number" class="form-control" id="university_target" name="university_target" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد المستهدف</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="university_actual" class="form-label">عدد المشاركين الفعليين</label>
+                        <input type="number" class="form-control" id="university_actual" name="university_actual" required>
+                        <div class="invalid-feedback">يرجى إدخال العدد الفعلي</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="university_percentage" class="form-label">نسبة المشاركة (%)</label>
+                        <input type="number" class="form-control" id="university_percentage" name="university_percentage" min="0" max="100" required>
+                        <div class="invalid-feedback">يرجى إدخال نسبة المشاركة</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="university_impact" class="form-label">الأثر</label>
+                        <textarea class="form-control" id="university_impact" name="university_impact" rows="2" required></textarea>
+                        <div class="invalid-feedback">يرجى إدخال الأثر</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="university_evaluation" class="form-label">طريقة التقييم</label>
+                        <select class="form-select" id="university_evaluation" name="university_evaluation" required>
+                            <option value="">اختر طريقة التقييم</option>
+                            <option value="survey">استبانة</option>
+                            <option value="interview">مقابلة</option>
+                            <option value="observation">ملاحظة</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار طريقة التقييم</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="university_impact_type" class="form-label">نوع التأثير</label>
+                        <select class="form-select" id="university_impact_type" name="university_impact_type" required>
+                            <option value="">اختر نوع التأثير</option>
+                            <option value="positive">إيجابي</option>
+                            <option value="negative">سلبي</option>
+                            <option value="neutral">محايد</option>
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار نوع التأثير</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="university_duration" class="form-label">المدة الزمنية</label>
+                        <input type="text" class="form-control" id="university_duration" name="university_duration" placeholder="مثال: 3 أشهر" required>
+                        <div class="invalid-feedback">يرجى إدخال المدة الزمنية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form4' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

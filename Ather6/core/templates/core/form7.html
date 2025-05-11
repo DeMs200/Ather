@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 54%;" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100">54%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج السابع: الميزانية والموارد</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الموارد البشرية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="staff_count" class="form-label">عدد الموظفين</label>
+                    <input type="number" class="form-control" id="staff_count" name="staff_count" min="0" required>
+                    <div class="invalid-feedback">يرجى إدخال عدد الموظفين</div>
+                </div>
+                <div class="mb-3">
+                    <label for="staff_roles" class="form-label">الأدوار والمسؤوليات</label>
+                    <textarea class="form-control" id="staff_roles" name="staff_roles" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال الأدوار والمسؤوليات</div>
+                </div>
+                <div class="mb-3">
+                    <label for="staff_costs" class="form-label">تكاليف الموارد البشرية</label>
+                    <input type="number" class="form-control" id="staff_costs" name="staff_costs" min="0" step="0.01" required>
+                    <div class="invalid-feedback">يرجى إدخال تكاليف الموارد البشرية</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الموارد المادية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="equipment" class="form-label">المعدات والأجهزة</label>
+                    <textarea class="form-control" id="equipment" name="equipment" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال المعدات والأجهزة المطلوبة</div>
+                </div>
+                <div class="mb-3">
+                    <label for="equipment_costs" class="form-label">تكاليف المعدات</label>
+                    <input type="number" class="form-control" id="equipment_costs" name="equipment_costs" min="0" step="0.01" required>
+                    <div class="invalid-feedback">يرجى إدخال تكاليف المعدات</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الموارد المالية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="total_budget" class="form-label">الميزانية الإجمالية</label>
+                    <input type="number" class="form-control" id="total_budget" name="total_budget" min="0" step="0.01" required>
+                    <div class="invalid-feedback">يرجى إدخال الميزانية الإجمالية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="funding_sources" class="form-label">مصادر التمويل</label>
+                    <textarea class="form-control" id="funding_sources" name="funding_sources" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال مصادر التمويل</div>
+                </div>
+                <div class="mb-3">
+                    <label for="additional_costs" class="form-label">تكاليف إضافية</label>
+                    <textarea class="form-control" id="additional_costs" name="additional_costs" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال التكاليف الإضافية</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الموارد اللوجستية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="venue" class="form-label">مكان التنفيذ</label>
+                    <input type="text" class="form-control" id="venue" name="venue" required>
+                    <div class="invalid-feedback">يرجى إدخال مكان التنفيذ</div>
+                </div>
+                <div class="mb-3">
+                    <label for="logistics_needs" class="form-label">الاحتياجات اللوجستية</label>
+                    <textarea class="form-control" id="logistics_needs" name="logistics_needs" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال الاحتياجات اللوجستية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="logistics_costs" class="form-label">تكاليف اللوجستيات</label>
+                    <input type="number" class="form-control" id="logistics_costs" name="logistics_costs" min="0" step="0.01" required>
+                    <div class="invalid-feedback">يرجى إدخال تكاليف اللوجستيات</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form6' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

@@ -1,0 +1,106 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 18%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">18%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الثاني: الاتساق الاستراتيجي</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label class="form-label">أهداف التنمية المستدامة (SDGs)</label>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_1" id="sdg_1">
+                <label class="form-check-label" for="sdg_1">القضاء على الفقر</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_2" id="sdg_2">
+                <label class="form-check-label" for="sdg_2">القضاء على الجوع</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_3" id="sdg_3">
+                <label class="form-check-label" for="sdg_3">الصحة الجيدة والرفاه</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_4" id="sdg_4">
+                <label class="form-check-label" for="sdg_4">التعليم الجيد</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_5" id="sdg_5">
+                <label class="form-check-label" for="sdg_5">المساواة بين الجنسين</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_6" id="sdg_6">
+                <label class="form-check-label" for="sdg_6">المياه النظيفة والنظافة الصحية</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_7" id="sdg_7">
+                <label class="form-check-label" for="sdg_7">طاقة نظيفة وبأسعار معقولة</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_8" id="sdg_8">
+                <label class="form-check-label" for="sdg_8">العمل اللائق ونمو الاقتصاد</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_9" id="sdg_9">
+                <label class="form-check-label" for="sdg_9">الصناعة والابتكار والهياكل الأساسية</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="sdg_10" id="sdg_10">
+                <label class="form-check-label" for="sdg_10">الحد من أوجه عدم المساواة</label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="vision_2030" class="form-label">ارتباط المشروع برؤية المملكة 2030</label>
+            <select class="form-select" id="vision_2030" name="vision_2030" required>
+                <option value="">اختر المحور</option>
+                <option value="society">مجتمع حيوي</option>
+                <option value="economy">اقتصاد مزدهر</option>
+                <option value="nation">وطن طموح</option>
+            </select>
+            <div class="invalid-feedback">يرجى اختيار محور رؤية 2030</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="university_strategy" class="form-label">ارتباط المشروع بالخطة الاستراتيجية للجامعة</label>
+            <textarea class="form-control" id="university_strategy" name="university_strategy" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال ارتباط المشروع بالخطة الاستراتيجية للجامعة</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="community_partnership" class="form-label">توافق المشروع مع خطة الشراكة المجتمعية</label>
+            <textarea class="form-control" id="community_partnership" name="community_partnership" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال توافق المشروع مع خطة الشراكة المجتمعية</div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form1' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

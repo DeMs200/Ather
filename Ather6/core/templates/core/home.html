@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="row align-items-center min-vh-75">
+    <div class="col-md-6">
+        <h1 class="display-4 fw-bold mb-4">منصة قياس الأثر التطوعي</h1>
+        <p class="lead mb-4">منصة متكاملة لقياس وتقييم أثر المشاريع التطوعية، تساعدك على تتبع وتحسين تأثير مشاريعك في المجتمع.</p>
+        <div class="d-grid gap-2 d-md-flex">
+            <a href="{% url 'form1' %}" class="btn btn-primary btn-lg px-4 me-md-2">ابدأ مشروعك</a>
+            <a href="{% url 'ideas' %}" class="btn btn-outline-secondary btn-lg px-4">تصفح الأفكار</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img src="https://via.placeholder.com/600x400" alt="صورة توضيحية" class="img-fluid rounded shadow">
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h2 class="text-center mb-4">كيف يعمل أثر؟</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-pencil-square display-4 text-primary mb-3"></i>
+                <h3 class="h5">تقييم المشروع</h3>
+                <p>قم بتعبئة 11 نموذجاً شاملاً لتقييم مشروعك التطوعي</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-graph-up display-4 text-primary mb-3"></i>
+                <h3 class="h5">قياس الأثر</h3>
+                <p>تتبع مؤشرات الأداء وتقييم النتائج بشكل دقيق</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-file-earmark-pdf display-4 text-primary mb-3"></i>
+                <h3 class="h5">تصدير التقرير</h3>
+                <p>احصل على تقرير PDF شامل عن مشروعك</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h2 class="text-center mb-4">مميزات المنصة</h2>
+    </div>
+    <div class="col-md-6">
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                واجهة عربية سهلة الاستخدام
+            </li>
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                لا حاجة لتسجيل الدخول
+            </li>
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                حفظ البيانات تلقائياً
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                تقارير PDF احترافية
+            </li>
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                دعم كامل للغة العربية
+            </li>
+            <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                تصميم متجاوب مع جميع الأجهزة
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %} 

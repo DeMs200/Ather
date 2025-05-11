@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير المشروع النهائي</title>
+    <style>
+        @font-face {
+            font-family: 'Arial';
+            src: url('path/to/arial.ttf');
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 2cm;
+            direction: rtl;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2cm;
+        }
+        .section {
+            margin-bottom: 1cm;
+        }
+        .section-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 0.5cm;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.2cm;
+        }
+        .subsection-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 0.3cm;
+        }
+        .content {
+            margin-bottom: 0.5cm;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.5cm;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 0.3cm;
+            text-align: right;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2cm;
+            font-size: 10pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>تقرير المشروع النهائي</h1>
+        <h2>{{ project_name }}</h2>
+    </div>
+
+    <div class="section">
+        <div class="section-title">معلومات المشروع الأساسية</div>
+        <table>
+            <tr>
+                <th>اسم المشروع</th>
+                <td>{{ project_name }}</td>
+            </tr>
+            <tr>
+                <th>الجهة المنفذة</th>
+                <td>{{ implementing_agency }}</td>
+            </tr>
+            <tr>
+                <th>المدة</th>
+                <td>{{ project_duration }}</td>
+            </tr>
+            <tr>
+                <th>الميزانية</th>
+                <td>{{ project_budget }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">أهداف المشروع</div>
+        <div class="content">{{ project_objectives }}</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">الأنشطة الرئيسية</div>
+        <div class="content">{{ main_activities }}</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">المخرجات والنتائج</div>
+        <div class="subsection-title">المخرجات</div>
+        <div class="content">{{ project_outputs }}</div>
+        <div class="subsection-title">النتائج</div>
+        <div class="content">{{ project_outcomes }}</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">المخاطر واستراتيجيات التخفيف</div>
+        <table>
+            <tr>
+                <th>نوع المخاطر</th>
+                <th>المخاطر</th>
+                <th>الأثر</th>
+                <th>استراتيجيات التخفيف</th>
+            </tr>
+            <tr>
+                <td>تشغيلية</td>
+                <td>{{ risks_and_mitigation.operational.risks }}</td>
+                <td>{{ risks_and_mitigation.operational.impact }}</td>
+                <td>{{ risks_and_mitigation.operational.mitigation }}</td>
+            </tr>
+            <tr>
+                <td>مالية</td>
+                <td>{{ risks_and_mitigation.financial.risks }}</td>
+                <td>{{ risks_and_mitigation.financial.impact }}</td>
+                <td>{{ risks_and_mitigation.financial.mitigation }}</td>
+            </tr>
+            <tr>
+                <td>بيئية</td>
+                <td>{{ risks_and_mitigation.environmental.risks }}</td>
+                <td>{{ risks_and_mitigation.environmental.impact }}</td>
+                <td>{{ risks_and_mitigation.environmental.mitigation }}</td>
+            </tr>
+            <tr>
+                <td>اجتماعية</td>
+                <td>{{ risks_and_mitigation.social.risks }}</td>
+                <td>{{ risks_and_mitigation.social.impact }}</td>
+                <td>{{ risks_and_mitigation.social.mitigation }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">المتابعة والتقييم</div>
+        <table>
+            <tr>
+                <th>تكرار المتابعة</th>
+                <td>{{ monitoring_and_evaluation.frequency }}</td>
+            </tr>
+            <tr>
+                <th>طرق المتابعة</th>
+                <td>{{ monitoring_and_evaluation.methods }}</td>
+            </tr>
+            <tr>
+                <th>مسؤول المتابعة</th>
+                <td>{{ monitoring_and_evaluation.responsible }}</td>
+            </tr>
+            <tr>
+                <th>معايير التقييم</th>
+                <td>{{ monitoring_and_evaluation.criteria }}</td>
+            </tr>
+            <tr>
+                <th>أدوات التقييم</th>
+                <td>{{ monitoring_and_evaluation.tools }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">الاستدامة والأثر</div>
+        <div class="subsection-title">عوامل الاستدامة</div>
+        <div class="content">{{ sustainability_and_impact.factors }}</div>
+        <div class="subsection-title">تحديات الاستدامة</div>
+        <div class="content">{{ sustainability_and_impact.challenges }}</div>
+        <div class="subsection-title">حلول الاستدامة</div>
+        <div class="content">{{ sustainability_and_impact.solutions }}</div>
+        <div class="subsection-title">الأثر</div>
+        <table>
+            <tr>
+                <th>قصير المدى</th>
+                <td>{{ sustainability_and_impact.short_term }}</td>
+            </tr>
+            <tr>
+                <th>متوسط المدى</th>
+                <td>{{ sustainability_and_impact.medium_term }}</td>
+            </tr>
+            <tr>
+                <th>طويل المدى</th>
+                <td>{{ sustainability_and_impact.long_term }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">التقرير النهائي</div>
+        <div class="subsection-title">إنجازات المشروع</div>
+        <div class="content">{{ project_achievements }}</div>
+        <div class="subsection-title">تحديات المشروع</div>
+        <div class="content">{{ project_challenges }}</div>
+        <div class="subsection-title">التوصيات</div>
+        <div class="content">{{ recommendations }}</div>
+        <div class="subsection-title">الدروس المستفادة</div>
+        <div class="content">{{ lessons_learned }}</div>
+    </div>
+
+    <div class="footer">
+        <p>تاريخ التقرير: {{ completion_date }}</p>
+        <p>تم إنشاء هذا التقرير بواسطة نظام إدارة المشاريع</p>
+    </div>
+</body>
+</html> 

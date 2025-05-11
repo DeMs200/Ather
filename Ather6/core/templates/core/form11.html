@@ -1,0 +1,112 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الحادي عشر: إنجاز المشروع والتقرير النهائي</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">إنجاز المشروع</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="project_completion_date" class="form-label">تاريخ إنجاز المشروع</label>
+                    <input type="date" class="form-control" id="project_completion_date" name="project_completion_date" required>
+                    <div class="invalid-feedback">يرجى إدخال تاريخ إنجاز المشروع</div>
+                </div>
+                <div class="mb-3">
+                    <label for="project_achievements" class="form-label">إنجازات المشروع</label>
+                    <textarea class="form-control" id="project_achievements" name="project_achievements" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال إنجازات المشروع</div>
+                </div>
+                <div class="mb-3">
+                    <label for="project_challenges" class="form-label">تحديات المشروع</label>
+                    <textarea class="form-control" id="project_challenges" name="project_challenges" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال تحديات المشروع</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">التقرير النهائي</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="final_report_summary" class="form-label">ملخص التقرير النهائي</label>
+                    <textarea class="form-control" id="final_report_summary" name="final_report_summary" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال ملخص التقرير النهائي</div>
+                </div>
+                <div class="mb-3">
+                    <label for="final_report_recommendations" class="form-label">التوصيات</label>
+                    <textarea class="form-control" id="final_report_recommendations" name="final_report_recommendations" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال التوصيات</div>
+                </div>
+                <div class="mb-3">
+                    <label for="final_report_lessons" class="form-label">الدروس المستفادة</label>
+                    <textarea class="form-control" id="final_report_lessons" name="final_report_lessons" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال الدروس المستفادة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المرفقات</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="attachments" class="form-label">المرفقات المطلوبة</label>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="attachment_final_report" id="attachment_final_report">
+                        <label class="form-check-label" for="attachment_final_report">التقرير النهائي</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="attachment_financial_report" id="attachment_financial_report">
+                        <label class="form-check-label" for="attachment_financial_report">التقرير المالي</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="attachment_photos" id="attachment_photos">
+                        <label class="form-check-label" for="attachment_photos">الصور التوثيقية</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="attachment_other" id="attachment_other">
+                        <label class="form-check-label" for="attachment_other">مرفقات أخرى</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form10' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">إنهاء</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

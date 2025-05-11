@@ -1,0 +1,136 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج التاسع: المتابعة والتقييم</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">آلية المتابعة</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="monitoring_frequency" class="form-label">تكرار المتابعة</label>
+                    <select class="form-select" id="monitoring_frequency" name="monitoring_frequency" required>
+                        <option value="">اختر تكرار المتابعة</option>
+                        <option value="daily">يومي</option>
+                        <option value="weekly">أسبوعي</option>
+                        <option value="monthly">شهري</option>
+                        <option value="quarterly">ربع سنوي</option>
+                        <option value="biannual">نصف سنوي</option>
+                        <option value="annual">سنوي</option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار تكرار المتابعة</div>
+                </div>
+                <div class="mb-3">
+                    <label for="monitoring_methods" class="form-label">طرق المتابعة</label>
+                    <textarea class="form-control" id="monitoring_methods" name="monitoring_methods" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال طرق المتابعة</div>
+                </div>
+                <div class="mb-3">
+                    <label for="monitoring_responsible" class="form-label">مسؤول المتابعة</label>
+                    <input type="text" class="form-control" id="monitoring_responsible" name="monitoring_responsible" required>
+                    <div class="invalid-feedback">يرجى إدخال مسؤول المتابعة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">آلية التقييم</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="evaluation_criteria" class="form-label">معايير التقييم</label>
+                    <textarea class="form-control" id="evaluation_criteria" name="evaluation_criteria" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال معايير التقييم</div>
+                </div>
+                <div class="mb-3">
+                    <label for="evaluation_tools" class="form-label">أدوات التقييم</label>
+                    <textarea class="form-control" id="evaluation_tools" name="evaluation_tools" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أدوات التقييم</div>
+                </div>
+                <div class="mb-3">
+                    <label for="evaluation_responsible" class="form-label">مسؤول التقييم</label>
+                    <input type="text" class="form-control" id="evaluation_responsible" name="evaluation_responsible" required>
+                    <div class="invalid-feedback">يرجى إدخال مسؤول التقييم</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">تقارير المتابعة والتقييم</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="report_types" class="form-label">أنواع التقارير</label>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="report_progress" id="report_progress">
+                        <label class="form-check-label" for="report_progress">تقرير التقدم</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="report_performance" id="report_performance">
+                        <label class="form-check-label" for="report_performance">تقرير الأداء</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="report_impact" id="report_impact">
+                        <label class="form-check-label" for="report_impact">تقرير الأثر</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="report_final" id="report_final">
+                        <label class="form-check-label" for="report_final">التقرير النهائي</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="report_frequency" class="form-label">تكرار التقارير</label>
+                    <select class="form-select" id="report_frequency" name="report_frequency" required>
+                        <option value="">اختر تكرار التقارير</option>
+                        <option value="monthly">شهري</option>
+                        <option value="quarterly">ربع سنوي</option>
+                        <option value="biannual">نصف سنوي</option>
+                        <option value="annual">سنوي</option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار تكرار التقارير</div>
+                </div>
+                <div class="mb-3">
+                    <label for="report_recipients" class="form-label">مستلمي التقارير</label>
+                    <textarea class="form-control" id="report_recipients" name="report_recipients" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال مستلمي التقارير</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form8' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

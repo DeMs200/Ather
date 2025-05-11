@@ -1,0 +1,139 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج السادس: الجدول الزمني للمشروع</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المرحلة الأولى: التخطيط</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="planning_start" class="form-label">تاريخ البداية</label>
+                        <input type="date" class="form-control" id="planning_start" name="planning_start" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ البداية</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="planning_end" class="form-label">تاريخ النهاية</label>
+                        <input type="date" class="form-control" id="planning_end" name="planning_end" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ النهاية</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="planning_activities" class="form-label">الأنشطة</label>
+                    <textarea class="form-control" id="planning_activities" name="planning_activities" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أنشطة المرحلة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المرحلة الثانية: التنفيذ</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="implementation_start" class="form-label">تاريخ البداية</label>
+                        <input type="date" class="form-control" id="implementation_start" name="implementation_start" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ البداية</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="implementation_end" class="form-label">تاريخ النهاية</label>
+                        <input type="date" class="form-control" id="implementation_end" name="implementation_end" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ النهاية</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="implementation_activities" class="form-label">الأنشطة</label>
+                    <textarea class="form-control" id="implementation_activities" name="implementation_activities" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أنشطة المرحلة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المرحلة الثالثة: المتابعة والتقييم</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="evaluation_start" class="form-label">تاريخ البداية</label>
+                        <input type="date" class="form-control" id="evaluation_start" name="evaluation_start" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ البداية</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="evaluation_end" class="form-label">تاريخ النهاية</label>
+                        <input type="date" class="form-control" id="evaluation_end" name="evaluation_end" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ النهاية</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="evaluation_activities" class="form-label">الأنشطة</label>
+                    <textarea class="form-control" id="evaluation_activities" name="evaluation_activities" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أنشطة المرحلة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المرحلة الرابعة: التقرير النهائي</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="report_start" class="form-label">تاريخ البداية</label>
+                        <input type="date" class="form-control" id="report_start" name="report_start" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ البداية</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="report_end" class="form-label">تاريخ النهاية</label>
+                        <input type="date" class="form-control" id="report_end" name="report_end" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ النهاية</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="report_activities" class="form-label">الأنشطة</label>
+                    <textarea class="form-control" id="report_activities" name="report_activities" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أنشطة المرحلة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form5' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

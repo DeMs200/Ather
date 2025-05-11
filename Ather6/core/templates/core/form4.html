@@ -1,0 +1,164 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 36%;" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100">36%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الرابع: توصيات أصحاب المصلحة</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المستفيدون</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="beneficiaries_recommendation" class="form-label">التوصية</label>
+                    <textarea class="form-control" id="beneficiaries_recommendation" name="beneficiaries_recommendation" rows="2" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال توصية المستفيدين</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="beneficiaries_date" class="form-label">تاريخ التنفيذ</label>
+                        <input type="date" class="form-control" id="beneficiaries_date" name="beneficiaries_date" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ التنفيذ</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="beneficiaries_responsible" class="form-label">مسؤول التنفيذ</label>
+                        <input type="text" class="form-control" id="beneficiaries_responsible" name="beneficiaries_responsible" required>
+                        <div class="invalid-feedback">يرجى إدخال مسؤول التنفيذ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المجتمع</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="community_recommendation" class="form-label">التوصية</label>
+                    <textarea class="form-control" id="community_recommendation" name="community_recommendation" rows="2" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال توصية المجتمع</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="community_date" class="form-label">تاريخ التنفيذ</label>
+                        <input type="date" class="form-control" id="community_date" name="community_date" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ التنفيذ</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="community_responsible" class="form-label">مسؤول التنفيذ</label>
+                        <input type="text" class="form-control" id="community_responsible" name="community_responsible" required>
+                        <div class="invalid-feedback">يرجى إدخال مسؤول التنفيذ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الجامعة</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="university_recommendation" class="form-label">التوصية</label>
+                    <textarea class="form-control" id="university_recommendation" name="university_recommendation" rows="2" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال توصية الجامعة</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="university_date" class="form-label">تاريخ التنفيذ</label>
+                        <input type="date" class="form-control" id="university_date" name="university_date" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ التنفيذ</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="university_responsible" class="form-label">مسؤول التنفيذ</label>
+                        <input type="text" class="form-control" id="university_responsible" name="university_responsible" required>
+                        <div class="invalid-feedback">يرجى إدخال مسؤول التنفيذ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">الشريك</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="partner_recommendation" class="form-label">التوصية</label>
+                    <textarea class="form-control" id="partner_recommendation" name="partner_recommendation" rows="2" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال توصية الشريك</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="partner_date" class="form-label">تاريخ التنفيذ</label>
+                        <input type="date" class="form-control" id="partner_date" name="partner_date" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ التنفيذ</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="partner_responsible" class="form-label">مسؤول التنفيذ</label>
+                        <input type="text" class="form-control" id="partner_responsible" name="partner_responsible" required>
+                        <div class="invalid-feedback">يرجى إدخال مسؤول التنفيذ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المتطوعون</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="volunteers_recommendation" class="form-label">التوصية</label>
+                    <textarea class="form-control" id="volunteers_recommendation" name="volunteers_recommendation" rows="2" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال توصية المتطوعين</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="volunteers_date" class="form-label">تاريخ التنفيذ</label>
+                        <input type="date" class="form-control" id="volunteers_date" name="volunteers_date" required>
+                        <div class="invalid-feedback">يرجى تحديد تاريخ التنفيذ</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="volunteers_responsible" class="form-label">مسؤول التنفيذ</label>
+                        <input type="text" class="form-control" id="volunteers_responsible" name="volunteers_responsible" required>
+                        <div class="invalid-feedback">يرجى إدخال مسؤول التنفيذ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form3' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 63%;" aria-valuenow="63" aria-valuemin="0" aria-valuemax="100">63%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الثامن: المخاطر واستراتيجيات التخفيف</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المخاطر التشغيلية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="operational_risks" class="form-label">المخاطر</label>
+                    <textarea class="form-control" id="operational_risks" name="operational_risks" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال المخاطر التشغيلية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="operational_impact" class="form-label">الأثر</label>
+                    <textarea class="form-control" id="operational_impact" name="operational_impact" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أثر المخاطر</div>
+                </div>
+                <div class="mb-3">
+                    <label for="operational_mitigation" class="form-label">استراتيجيات التخفيف</label>
+                    <textarea class="form-control" id="operational_mitigation" name="operational_mitigation" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال استراتيجيات التخفيف</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المخاطر المالية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="financial_risks" class="form-label">المخاطر</label>
+                    <textarea class="form-control" id="financial_risks" name="financial_risks" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال المخاطر المالية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="financial_impact" class="form-label">الأثر</label>
+                    <textarea class="form-control" id="financial_impact" name="financial_impact" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أثر المخاطر</div>
+                </div>
+                <div class="mb-3">
+                    <label for="financial_mitigation" class="form-label">استراتيجيات التخفيف</label>
+                    <textarea class="form-control" id="financial_mitigation" name="financial_mitigation" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال استراتيجيات التخفيف</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المخاطر البيئية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="environmental_risks" class="form-label">المخاطر</label>
+                    <textarea class="form-control" id="environmental_risks" name="environmental_risks" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال المخاطر البيئية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="environmental_impact" class="form-label">الأثر</label>
+                    <textarea class="form-control" id="environmental_impact" name="environmental_impact" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أثر المخاطر</div>
+                </div>
+                <div class="mb-3">
+                    <label for="environmental_mitigation" class="form-label">استراتيجيات التخفيف</label>
+                    <textarea class="form-control" id="environmental_mitigation" name="environmental_mitigation" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال استراتيجيات التخفيف</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="h5 mb-0">المخاطر الاجتماعية</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="social_risks" class="form-label">المخاطر</label>
+                    <textarea class="form-control" id="social_risks" name="social_risks" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال المخاطر الاجتماعية</div>
+                </div>
+                <div class="mb-3">
+                    <label for="social_impact" class="form-label">الأثر</label>
+                    <textarea class="form-control" id="social_impact" name="social_impact" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال أثر المخاطر</div>
+                </div>
+                <div class="mb-3">
+                    <label for="social_mitigation" class="form-label">استراتيجيات التخفيف</label>
+                    <textarea class="form-control" id="social_mitigation" name="social_mitigation" rows="3" required></textarea>
+                    <div class="invalid-feedback">يرجى إدخال استراتيجيات التخفيف</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form7' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

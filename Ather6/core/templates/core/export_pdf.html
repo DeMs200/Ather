@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير مشروع تطوعي - منصة أثر</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        @page :first {
+            @bottom-right {
+                content: "التاريخ: " var(--today);
+                font-size: 10pt;
+                color: #666;
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            font-size: 14pt;
+            line-height: 1.7;
+            color: #222;
+            padding: 40px;
+            margin: 0;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            color: #155724;
+            border-bottom: 2px solid #155724;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 18pt;
+        }
+        
+        .subsection-title {
+            color: #0d6efd;
+            margin: 15px 0;
+            font-size: 16pt;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #155724;
+            margin-left: 5px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+        }
+        
+        .signature-section {
+            margin-top: 50px;
+            page-break-inside: avoid;
+        }
+        
+        .signature-line {
+            border-bottom: 2px dashed #888;
+            width: 300px;
+            height: 40px;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12pt;
+            color: #666;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                padding: 0;
+            }
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h1 class="section-title">تقرير مشروع تطوعي - منصة أثر</h1>
+        <p class="text-muted">التاريخ: {{ today }}</p>
+    </div>
+
+    <!-- Project Information -->
+    <div class="section">
+        <h2 class="section-title">معلومات المشروع</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info-item">
+                    <span class="label">اسم المشروع:</span>
+                    <span>{{ project_name }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">الجهة المنفذة:</span>
+                    <span>{{ implementing_agency }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">نوع المشروع:</span>
+                    <span>{{ project_type }}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-item">
+                    <span class="label">المدة الزمنية:</span>
+                    <span>{{ project_duration }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">موقع المشروع:</span>
+                    <span>{{ project_location }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Goals and Objectives -->
+    <div class="section">
+        <h2 class="section-title">أهداف المشروع</h2>
+        <div class="mb-4">
+            <h3 class="subsection-title">الأهداف الرئيسية</h3>
+            <p>{{ project_objectives }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">الفئة المستهدفة</h3>
+            <p>{{ target_audience }}</p>
+        </div>
+        <div>
+            <h3 class="subsection-title">الأثر المتوقع</h3>
+            <p>{{ expected_impact }}</p>
+        </div>
+    </div>
+
+    <!-- Activities and Implementation -->
+    <div class="section">
+        <h2 class="section-title">الأنشطة والتنفيذ</h2>
+        <div class="mb-4">
+            <h3 class="subsection-title">الأنشطة الرئيسية</h3>
+            <p>{{ main_activities }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">خطوات التنفيذ</h3>
+            <p>{{ implementation_steps }}</p>
+        </div>
+        <div>
+            <h3 class="subsection-title">المخرجات المتوقعة</h3>
+            <p>{{ project_outputs }}</p>
+        </div>
+    </div>
+
+    <!-- Project Outcomes -->
+    <div class="section">
+        <h2 class="section-title">النتائج والأثر</h2>
+        <div class="mb-4">
+            <h3 class="subsection-title">النتائج</h3>
+            <p>{{ project_outcomes }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">معايير النجاح</h3>
+            <p>{{ success_criteria }}</p>
+        </div>
+        <div>
+            <h3 class="subsection-title">قياس الأثر</h3>
+            <p>{{ impact_measurement }}</p>
+        </div>
+    </div>
+
+    <!-- Stakeholders -->
+    <div class="section">
+        <h2 class="section-title">أصحاب المصلحة</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="subsection-title">الداخليون</h3>
+                <p>{{ stakeholders.internal }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">الخارجيون</h3>
+                <p>{{ stakeholders.external }}</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h3 class="subsection-title">الأدوار والمسؤوليات</h3>
+            <p>{{ stakeholders.roles }}</p>
+        </div>
+        <div class="mt-4">
+            <h3 class="subsection-title">مشاركة أصحاب المصلحة</h3>
+            <p>{{ stakeholders.engagement }}</p>
+        </div>
+    </div>
+
+    <!-- ROI and Impact -->
+    <div class="section">
+        <h2 class="section-title">العائد على الاستثمار والأثر</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="subsection-title">العائد المالي</h3>
+                <p>{{ roi.financial }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">الأثر الاجتماعي</h3>
+                <p>{{ roi.social }}</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3 class="subsection-title">الأثر البيئي</h3>
+                <p>{{ roi.environmental }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">الاستدامة</h3>
+                <p>{{ roi.sustainability }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget and Resources -->
+    <div class="section">
+        <h2 class="section-title">الميزانية والموارد</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="subsection-title">الميزانية الكلية</h3>
+                <p>{{ budget.total }} ريال</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">تفصيل الميزانية</h3>
+                <p>{{ budget.breakdown }}</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3 class="subsection-title">الموارد المطلوبة</h3>
+                <p>{{ budget.resources }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">مصادر التمويل</h3>
+                <p>{{ budget.funding_sources }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline and Schedule -->
+    <div class="section">
+        <h2 class="section-title">الجدول الزمني</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="subsection-title">تاريخ البدء</h3>
+                <p>{{ timeline.start_date }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">تاريخ الانتهاء</h3>
+                <p>{{ timeline.end_date }}</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h3 class="subsection-title">المراحل الرئيسية</h3>
+            <p>{{ timeline.milestones }}</p>
+        </div>
+        <div class="mt-4">
+            <h3 class="subsection-title">الجدول التفصيلي</h3>
+            <p>{{ timeline.schedule }}</p>
+        </div>
+    </div>
+
+    <!-- Monitoring and Evaluation -->
+    <div class="section">
+        <h2 class="section-title">المتابعة والتقييم</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="subsection-title">المؤشرات</h3>
+                <p>{{ monitoring_and_evaluation.criteria }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">طرق المتابعة</h3>
+                <p>{{ monitoring_and_evaluation.methods }}</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3 class="subsection-title">تكرار المتابعة</h3>
+                <p>{{ monitoring_and_evaluation.frequency }}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subsection-title">آليات التقرير</h3>
+                <p>{{ monitoring_and_evaluation.reporting }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Report -->
+    <div class="section">
+        <h2 class="section-title">التقرير النهائي</h2>
+        <div class="mb-4">
+            <h3 class="subsection-title">التوصيات النهائية</h3>
+            <p>{{ final_report.recommendations }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">التحديات</h3>
+            <p>{{ final_report.challenges }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">الحلول المطبقة</h3>
+            <p>{{ final_report.solutions }}</p>
+        </div>
+        <div>
+            <h3 class="subsection-title">الخطط المستقبلية</h3>
+            <p>{{ final_report.future_plans }}</p>
+        </div>
+    </div>
+
+    <!-- Project Completion -->
+    <div class="section">
+        <h2 class="section-title">إنجاز المشروع</h2>
+        <div class="mb-4">
+            <h3 class="subsection-title">الدروس المستفادة</h3>
+            <p>{{ completion.lessons_learned }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">تاريخ الانتهاء</h3>
+            <p>{{ completion.completion_date }}</p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subsection-title">الحالة النهائية</h3>
+            <p>{{ completion.final_status }}</p>
+        </div>
+        <div>
+            <h3 class="subsection-title">إجراءات الاستدامة</h3>
+            <p>{{ completion.sustainability }}</p>
+        </div>
+    </div>
+
+    <!-- Signature Section -->
+    <div class="signature-section">
+        <h2 class="section-title">التوقيع</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="signature-line"></div>
+                <p class="text-muted mt-2">اسم الجهة المشرفة</p>
+            </div>
+            <div class="col-md-6">
+                <div class="signature-line"></div>
+                <p class="text-muted mt-2">التاريخ</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <p>تم إعداد التقرير بواسطة منصة أثر | التاريخ: {{ today }}</p>
+    </footer>
+
+    <!-- Action Buttons (only visible in web view) -->
+    <div class="no-print text-center mt-4">
+        <a href="{% url 'form10' %}" class="btn btn-secondary me-2">السابق</a>
+        <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary me-2">تصدير PDF</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn btn-success">حفظ وإنهاء</a>
+    </div>
+
+    <script>
+        // Set the date variable for the footer
+        document.documentElement.style.setProperty('--today', '{{ today }}');
+    </script>
+</body>
+</html> 

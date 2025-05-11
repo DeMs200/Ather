@@ -1,0 +1,120 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 9%;" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100">9%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الأول: معلومات المشروع</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="project_name" class="form-label">اسم المشروع</label>
+            <input type="text" class="form-control" id="project_name" name="project_name" required>
+            <div class="invalid-feedback">يرجى إدخال اسم المشروع</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="description" class="form-label">وصف المشروع</label>
+            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال وصف المشروع</div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="start_date" class="form-label">تاريخ البداية</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                <div class="invalid-feedback">يرجى تحديد تاريخ البداية</div>
+            </div>
+            <div class="col-md-6">
+                <label for="end_date" class="form-label">تاريخ النهاية</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" required>
+                <div class="invalid-feedback">يرجى تحديد تاريخ النهاية</div>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="target_group" class="form-label">الفئة المستهدفة</label>
+            <select class="form-select" id="target_group" name="target_group" required>
+                <option value="">اختر الفئة المستهدفة</option>
+                <option value="students">طلاب</option>
+                <option value="patients">مرضى</option>
+                <option value="elderly">كبار السن</option>
+                <option value="children">أطفال</option>
+                <option value="women">نساء</option>
+                <option value="youth">شباب</option>
+                <option value="other">أخرى</option>
+            </select>
+            <div class="invalid-feedback">يرجى اختيار الفئة المستهدفة</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="stakeholders" class="form-label">أصحاب المصلحة</label>
+            <textarea class="form-control" id="stakeholders" name="stakeholders" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال أصحاب المصلحة</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="need_assessment" class="form-label">كيف تم رصد الاحتياج؟</label>
+            <select class="form-select" id="need_assessment" name="need_assessment" required>
+                <option value="">اختر طريقة رصد الاحتياج</option>
+                <option value="survey">استبانة</option>
+                <option value="observation">ملاحظة</option>
+                <option value="interviews">مقابلات</option>
+                <option value="focus_groups">مجموعات بؤرية</option>
+                <option value="other">أخرى</option>
+            </select>
+            <div class="invalid-feedback">يرجى اختيار طريقة رصد الاحتياج</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="supervisor" class="form-label">الجهة المشرفة</label>
+            <input type="text" class="form-control" id="supervisor" name="supervisor" required>
+            <div class="invalid-feedback">يرجى إدخال الجهة المشرفة</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="geographic_scope" class="form-label">النطاق الجغرافي</label>
+            <input type="text" class="form-control" id="geographic_scope" name="geographic_scope" required>
+            <div class="invalid-feedback">يرجى إدخال النطاق الجغرافي</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="supporting_entity" class="form-label">الجهة الداعمة</label>
+            <input type="text" class="form-control" id="supporting_entity" name="supporting_entity">
+        </div>
+
+        <div class="mb-4">
+            <label for="justification" class="form-label">مبررات تنفيذ المشروع</label>
+            <textarea class="form-control" id="justification" name="justification" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مبررات تنفيذ المشروع</div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 

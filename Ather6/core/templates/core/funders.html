@@ -1,0 +1,176 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+    
+    .funders-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        min-height: 100vh;
+    }
+    
+    .funders-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .funders-table thead {
+        background-color: #28a745;
+        color: white;
+    }
+    
+    .funders-table th {
+        padding: 15px;
+        font-weight: bold;
+        font-family: 'Amiri', serif;
+    }
+    
+    .funders-table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        font-family: 'Amiri', serif;
+    }
+    
+    .funders-table tr:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .support-btn {
+        background: #28a745;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Amiri', serif;
+        transition: background-color 0.3s;
+    }
+    
+    .support-btn:hover {
+        background: #218838;
+    }
+    
+    .progress-container {
+        width: 100%;
+        min-width: 160px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 5px 0;
+    }
+    
+    .progress-bar {
+        height: 24px;
+        transition: width 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-family: 'Amiri', serif;
+    }
+    
+    .progress-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4px;
+        font-size: 0.85em;
+        color: #666;
+    }
+    
+    .progress-details span {
+        font-family: 'Amiri', serif;
+    }
+    
+    .status-icon {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.85em;
+        font-weight: bold;
+        margin-top: 4px;
+    }
+    
+    .no-ideas {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        font-family: 'Amiri', serif;
+    }
+</style>
+
+<div class="funders-container" dir="rtl">
+    <h2 class="text-center mb-4" style="font-family: 'Amiri', serif;">المشاريع المقدمة للتمويل</h2>
+    
+    {% if ideas %}
+    <div class="table-responsive">
+        <table class="funders-table">
+            <thead>
+                <tr>
+                    <th>عنوان الفكرة</th>
+                    <th>اسم المشروع</th>
+                    <th>المنطقة</th>
+                    <th>الميزانية المطلوبة</th>
+                    <th>المبلغ المدفوع</th>
+                    <th>المبلغ المتبقي</th>
+                    <th>حالة التمويل</th>
+                    <th>ادعم هذا المشروع</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idea in ideas %}
+                <tr>
+                    <td>{{ idea.title }}</td>
+                    <td>{{ idea.project }}</td>
+                    <td>{{ idea.region }}</td>
+                    <td>{{ idea.goal }} ريال</td>
+                    <td>{{ idea.funded }} ريال</td>
+                    <td>{{ idea.remaining }} ريال</td>
+                    <td>
+                        <div class="status-icon">{{ idea.icon }}</div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: {{ idea.percent }}%; background-color: {{ idea.color }}">
+                                {{ idea.percent }}%
+                            </div>
+                        </div>
+                        <div class="progress-details">
+                            <span>تم التمويل: {{ idea.percent }}%</span>
+                            <span>المتبقي: {{ idea.percent_remaining }}%</span>
+                        </div>
+                        <div class="status-badge" style="background-color: {{ idea.color }}; color: white;">
+                            {{ idea.status }}
+                        </div>
+                    </td>
+                    <td>
+                        <button class="support-btn">ادعم الآن</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="no-ideas">
+        <h3>لا توجد مشاريع مقدمة للتمويل حالياً</h3>
+        <p class="text-muted">يمكنك تقديم فكرة مشروع جديدة من خلال صفحة الأفكار</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 

@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" style="width: 27%;" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100">27%</div>
+    </div>
+    
+    <h2 class="text-center mb-4">النموذج الثالث: مؤشرات الأداء</h2>
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="resources_indicator" class="form-label">مؤشر الموارد</label>
+            <textarea class="form-control" id="resources_indicator" name="resources_indicator" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مؤشر الموارد</div>
+            <small class="form-text text-muted">حدد الموارد المطلوبة لتنفيذ المشروع (مثل: الميزانية، الموظفين، المعدات)</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="activities_indicator" class="form-label">مؤشر الأنشطة</label>
+            <textarea class="form-control" id="activities_indicator" name="activities_indicator" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مؤشر الأنشطة</div>
+            <small class="form-text text-muted">حدد الأنشطة الرئيسية التي سيتم تنفيذها في المشروع</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="outputs_indicator" class="form-label">مؤشر المخرجات</label>
+            <textarea class="form-control" id="outputs_indicator" name="outputs_indicator" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مؤشر المخرجات</div>
+            <small class="form-text text-muted">حدد المخرجات المباشرة للمشروع (مثل: عدد المستفيدين، عدد الدورات)</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="outcomes_indicator" class="form-label">مؤشر النتائج</label>
+            <textarea class="form-control" id="outcomes_indicator" name="outcomes_indicator" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مؤشر النتائج</div>
+            <small class="form-text text-muted">حدد النتائج المتوقعة على المدى المتوسط (مثل: تحسين المهارات، تغيير السلوك)</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="impact_indicator" class="form-label">مؤشر الأثر</label>
+            <textarea class="form-control" id="impact_indicator" name="impact_indicator" rows="3" required></textarea>
+            <div class="invalid-feedback">يرجى إدخال مؤشر الأثر</div>
+            <small class="form-text text-muted">حدد الأثر طويل المدى للمشروع على المجتمع</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="measurement_method" class="form-label">طريقة القياس</label>
+            <select class="form-select" id="measurement_method" name="measurement_method" required>
+                <option value="">اختر طريقة القياس</option>
+                <option value="quantitative">كمي</option>
+                <option value="qualitative">نوعي</option>
+                <option value="mixed">مختلط</option>
+            </select>
+            <div class="invalid-feedback">يرجى اختيار طريقة القياس</div>
+        </div>
+
+        <div class="mb-4">
+            <label for="data_collection" class="form-label">طرق جمع البيانات</label>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="data_survey" id="data_survey">
+                <label class="form-check-label" for="data_survey">استبانات</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="data_interview" id="data_interview">
+                <label class="form-check-label" for="data_interview">مقابلات</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="data_observation" id="data_observation">
+                <label class="form-check-label" for="data_observation">ملاحظة</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="data_focus" id="data_focus">
+                <label class="form-check-label" for="data_focus">مجموعات بؤرية</label>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'form2' %}" class="btn btn-secondary btn-lg me-2">السابق</a>
+            <button type="submit" class="btn btn-primary btn-lg">التالي</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %} 
